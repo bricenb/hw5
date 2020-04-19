@@ -10,12 +10,19 @@ Item::Item(const std::string& description,
            double price,
            const Tax* first,
            const Tax* end) {
-  description_ = description;
+  descrip_ = description;
   price_ = price;
+  for (size_t i = 0; i < 2; ++i, ++first) {
+  percentage_ += first->percent();
+  }
 }
 
 double Item::price() const {
-  return price_;
+  double decimal = 0.0;
+  double tax_add = 0.0;
+  decimal = percentage_ / 100;
+  tax_add = price_ * decimal;
+  return tax_add + price_;
 }
 
 bool Item::operator==(const Item& rhs) const {
@@ -27,7 +34,7 @@ bool Item::operator!=(const Item& rhs) const {
 }
 
 double Item::operator+(const Item& rhs) const {
-return 11.5;
+return 0.0;
 }
 
 }  // namespace csce240

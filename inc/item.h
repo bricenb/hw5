@@ -70,7 +70,8 @@ class Item {
   double operator+(const Item& rhs) const;
 
  private:
-  std::string description_;
+  std::string descrip_;
+  double percentage_;
   double price_;
 };
 
